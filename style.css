@@ -44,6 +44,7 @@ h1 span { color: var(--primary); text-shadow: 0 0 15px var(--primary); }
     padding: 15px 40px;
     font-size: 1.2rem;
     border-radius: 50px;
+    margin-bottom: 50px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
