@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Master Quiz Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="ico.png" type="image/x-icon">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Écran d'accueil -->
+        <div id="home-screen" class="screen active">
+            <h1>MASTER<span>QUIZ</span></h1>
+            <p>10 Niveaux • 100 Défis • 1 Seul Maître</p>
+            <button id="start-btn" class="main-btn">Commencer l'Aventure</button>
+            <button id="settings-btn" class="secondary-btn">Statistiques & Infos</button>
+        </div>
+
+        <!-- Écran de jeu -->
+        <div id="game-screen" class="screen">
+            <div class="header">
+                <div class="level-indicator">Niveau <span id="current-level">1</span>/10</div>
+                <div class="score-display">Score: <span id="current-score">0</span>/10</div>
+                <div class="timer-display">Temps: <span id="time-left">30</span>s</div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div class="question-box">
+                <p id="question-text">Chargement de la question...</p>
+                <div id="options-container" class="options-grid">
+                    <!-- Les boutons de réponse seront générés ici -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Écran de résultat -->
+        <div id="result-screen" class="screen">
+            <h2 id="result-title">Niveau Réussi !</h2>
+            <p id="result-msg">Vous avez obtenu 8/10</p>
+            <div class="result-actions">
+                <button id="next-lvl-btn" class="main-btn">Niveau Suivant</button>
+                <button id="retry-btn" class="main-btn retry">Réessayer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>TABLEAU DES SCORES</h2>
+        <div id="scores-container">
+            <!-- Les scores par niveau s'afficheront ici -->
+        </div>
+        <hr>
+        <h3>À PROPOS</h3>
+        <p>Concepteur : <span class="highlight">Dieudonne-dev/Master Quiz Team</span></p>
+        <p>Version : 1.0.0 (Pro Edition)</p>
+        <button id="reset-scores" class="danger-btn">Réinitialiser les scores</button>
+    </div>
+</div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

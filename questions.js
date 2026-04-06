@@ -1,0 +1,122 @@
+const questionsDB = {
+    1: [ // Niveau 1 : Très facile
+        { q: "Quelle est la capitale de la France ?", options: ["Lyon", "Marseille", "Paris", "Bordeaux", "Lille"], correct: 2 },
+        { q: "Combien font 5 x 5 ?", options: ["20", "25", "30", "15", "10"], correct: 1 },
+        { q: "Quelle couleur obtient-on en mélangeant bleu et jaune ?", options: ["Violet", "Orange", "Vert", "Gris", "Rose"], correct: 2 },
+        { q: "Quel animal miaule ?", options: ["Chien", "Vache", "Chat", "Lion", "Oiseau"], correct: 2 },
+        { q: "Combien y a-t-il de jours dans une semaine ?", options: ["5", "6", "8", "7", "10"], correct: 3 },
+        { q: "Quel est l'inverse de 'Chaud' ?", options: ["Tiède", "Froid", "Glace", "Brûlant", "Frais"], correct: 1 },
+        { q: "L'outil principal d'un menuisier ?", options: ["Marteau", "Stéthoscope", "Casserole", "Pinceau", "Clavier"], correct: 0 },
+        { q: "Où se trouve la Tour Eiffel ?", options: ["Londres", "Berlin", "Paris", "Madrid", "Rome"], correct: 2 },
+        { q: "Quel est le plus grand océan ?", options: ["Atlantique", "Indien", "Arctique", "Pacifique", "Antarctique"], correct: 3 },
+        { q: "Qui est le meilleur ami de Mickey ?", options: ["Donald", "Dingo", "Pluto", "Bugs Bunny", "Simba"], correct: 1 }
+    ],
+    2: [ // Niveau 2 : Facile
+        { q: "Que signifie le sigle HTML ?", options: ["High Text Mark Link", "HyperText Markup Language", "Hyper Tool Multi Language", "Hybrid Text Mode Layout", "Home Tool Markup"], correct: 1 },
+        { q: "Combien de planètes compte le système solaire ?", options: ["7", "8", "9", "10", "6"], correct: 1 },
+        { q: "Quel pays a inventé les sushis ?", options: ["Chine", "Thaïlande", "Japon", "Corée", "Vietnam"], correct: 2 },
+        { q: "Qui a peint la Joconde ?", options: ["Picasso", "Van Gogh", "Léonard de Vinci", "Monet", "Dalí"], correct: 2 },
+        { q: "Quelle est la monnaie du Japon ?", options: ["Yuan", "Won", "Yen", "Baht", "Dollar"], correct: 2 },
+        { q: "Quelle est la racine carrée de 81 ?", options: ["7", "8", "9", "10", "11"], correct: 2 },
+        { q: "Quel est l'organe qui pompe le sang ?", options: ["Poumon", "Cerveau", "Foie", "Cœur", "Rein"], correct: 3 },
+        { q: "Dans quel pays se trouvent les pyramides de Gizeh ?", options: ["Maroc", "Égypte", "Tunisie", "Soudan", "Grèce"], correct: 1 },
+        { q: "Quel est le plus grand mammifère ?", options: ["Éléphant", "Girafe", "Baleine Bleue", "Requin Baleine", "Ours"], correct: 2 },
+        { q: "Combien de minutes y a-t-il dans une heure ?", options: ["50", "60", "70", "80", "100"], correct: 1 }
+    ],
+    3: [ // Niveau 3 : Débutant
+        { q: "Qui est l'auteur de 'Les Misérables' ?", options: ["Molière", "Zola", "Victor Hugo", "Balzac", "Flaubert"], correct: 2 },
+        { q: "En quelle année l'homme a-t-il marché sur la Lune ?", options: ["1965", "1969", "1972", "1961", "1975"], correct: 1 },
+        { q: "Quelle est la formule chimique de l'eau ?", options: ["CO2", "H2O", "O2", "NaCl", "CH4"], correct: 1 },
+        { q: "Quel gaz les plantes absorbent-elles ?", options: ["Oxygène", "Azote", "Dioxyde de carbone", "Hélium", "Hydrogène"], correct: 2 },
+        { q: "Combien y a-t-il de continents ?", options: ["5", "6", "7", "4", "8"], correct: 2 },
+        { q: "Qui a fondé Microsoft ?", options: ["Steve Jobs", "Elon Musk", "Bill Gates", "Mark Zuckerberg", "Jeff Bezos"], correct: 2 },
+        { q: "Quel est le métal le plus cher ?", options: ["Or", "Argent", "Platine", "Rhodium", "Cuivre"], correct: 3 },
+        { q: "Quelle langue parle-t-on au Brésil ?", options: ["Espagnol", "Portugais", "Français", "Anglais", "Italien"], correct: 1 },
+        { q: "Quel est le plus grand pays du monde par sa surface ?", options: ["Chine", "USA", "Canada", "Russie", "Brésil"], correct: 3 },
+        { q: "Quel est le symbole du Fer en chimie ?", options: ["F", "Fe", "Ir", "Au", "Sn"], correct: 1 }
+    ],
+    4: [ // Niveau 4 : Intermédiaire
+        { q: "Qui a découvert la pénicilline ?", options: ["Marie Curie", "Louis Pasteur", "Alexander Fleming", "Newton", "Einstein"], correct: 2 },
+        { q: "Quelle est la capitale de l'Australie ?", options: ["Sydney", "Melbourne", "Canberra", "Perth", "Brisbane"], correct: 2 },
+        { q: "Quel est l'os le plus long du corps humain ?", options: ["Tibia", "Humérus", "Fémur", "Radius", "Péroné"], correct: 2 },
+        { q: "Quel est le plus grand volcan du système solaire ?", options: ["Etna", "Vésuve", "Olympus Mons", "Mauna Loa", "Piton de la Fournaise"], correct: 2 },
+        { q: "Qui a écrit 'Le Petit Prince' ?", options: ["Maupassant", "Saint-Exupéry", "Camus", "Sartre", "Verne"], correct: 1 },
+        { q: "En informatique, que signifie CPU ?", options: ["Central Processing Unit", "Control Power Unit", "Core Program Utility", "Common Prime User", "Circuit Path Unit"], correct: 0 },
+        { q: "Quel est l'élément le plus abondant dans l'univers ?", options: ["Oxygène", "Carbone", "Hydrogène", "Hélium", "Azote"], correct: 2 },
+        { q: "Quelle mer borde la Jordanie et Israël ?", options: ["Mer Rouge", "Mer Méditerranée", "Mer Morte", "Mer Noire", "Mer Caspienne"], correct: 2 },
+        { q: "Combien d'États y a-t-il aux USA ?", options: ["48", "49", "50", "51", "52"], correct: 2 },
+        { q: "Quel est le langage de programmation le plus utilisé pour le Web ?", options: ["Python", "Java", "JavaScript", "C++", "PHP"], correct: 2 }
+    ],
+    5: [ // Niveau 5 : Avancé
+        { q: "Quel physicien a formulé la théorie de la relativité ?", options: ["Newton", "Bohr", "Einstein", "Hawking", "Tesla"], correct: 2 },
+        { q: "Quel est le plus grand désert du monde ?", options: ["Sahara", "Gobi", "Antarctique", "Kalahari", "Atacama"], correct: 2 },
+        { q: "Quelle est la capitale de la Turquie ?", options: ["Istanbul", "Ankara", "Izmir", "Antalya", "Bursa"], correct: 1 },
+        { q: "Qui a inventé le World Wide Web ?", options: ["Bill Gates", "Tim Berners-Lee", "Steve Wozniak", "Linus Torvalds", "Larry Page"], correct: 1 },
+        { q: "En quelle année a débuté la Révolution française ?", options: ["1776", "1789", "1804", "1792", "1815"], correct: 1 },
+        { q: "Quelle est la vitesse de la lumière ?", options: ["150 000 km/s", "200 000 km/s", "299 792 km/s", "400 000 km/s", "1 000 000 km/s"], correct: 2 },
+        { q: "Quel est le nom de la galaxie où nous vivons ?", options: ["Andromède", "Voie Lactée", "Sombrero", "Tourbillon", "Sculpteur"], correct: 1 },
+        { q: "Quelle est la valeur approximative de Pi ?", options: ["2.14", "3.16", "3.14", "3.41", "3.18"], correct: 2 },
+        { q: "Combien de cœurs possède une pieuvre ?", options: ["1", "2", "3", "4", "5"], correct: 2 },
+        { q: "Qui a écrit 'L'Avare' ?", options: ["Racine", "Corneille", "Molière", "Rousseau", "Voltaire"], correct: 2 }
+    ],
+    6: [ // Niveau 6 : Confirmé
+        { q: "Quel pays possède le plus d'îles au monde ?", options: ["Indonésie", "Canada", "Suède", "Philippines", "Norvège"], correct: 2 },
+        { q: "Quelle est la durée de gestation d'un éléphant ?", options: ["12 mois", "18 mois", "22 mois", "24 mois", "9 mois"], correct: 2 },
+        { q: "Quelle planète est surnommée la 'Planète Rouge' ?", options: ["Jupiter", "Mars", "Vénus", "Saturne", "Mercure"], correct: 1 },
+        { q: "Quel est l'élément chimique au numéro atomique 1 ?", options: ["Hélium", "Carbone", "Hydrogène", "Oxygène", "Or"], correct: 2 },
+        { q: "Qui a composé la 'Symphonie n°9' ?", options: ["Mozart", "Beethoven", "Bach", "Chopin", "Vivaldi"], correct: 1 },
+        { q: "Quelle est la capitale du Canada ?", options: ["Toronto", "Montréal", "Vancouver", "Ottawa", "Québec"], correct: 3 },
+        { q: "Combien d'octets y a-t-il dans un kilooctet (Ko) ?", options: ["1000", "1024", "1048", "990", "1200"], correct: 1 },
+        { q: "Quel est le plus grand lac d'Afrique ?", options: ["Lac Tanganyika", "Lac Malawi", "Lac Victoria", "Lac Tchad", "Lac Nasser"], correct: 2 },
+        { q: "Qui était le dieu du soleil dans l'Égypte ancienne ?", options: ["Osiris", "Horus", "Ra", "Anubis", "Thot"], correct: 2 },
+        { q: "Quel est le plus grand archipel du monde ?", options: ["Japon", "Maldives", "Indonésie", "Philippines", "Bahamas"], correct: 2 }
+    ],
+    7: [ // Niveau 7 : Expert
+        { q: "Quel est le point le plus profond des océans ?", options: ["Fosse de Java", "Fosse de Porto Rico", "Fosse des Mariannes", "Fosse des Tonga", "Fosse de Kermadec"], correct: 2 },
+        { q: "Quel peintre a réalisé 'Le Cri' ?", options: ["Edvard Munch", "Gustav Klimt", "René Magritte", "Francis Bacon", "Claude Monet"], correct: 0 },
+        { q: "Quel est le plus haut sommet d'Afrique ?", options: ["Mont Kenya", "Kilimandjaro", "Mont Toubkal", "Mont Rwenzori", "Mont Elgon"], correct: 1 },
+        { q: "Quelle est la capitale de l'Islande ?", options: ["Reykjavik", "Oslo", "Helsinki", "Copenhague", "Stockholm"], correct: 0 },
+        { q: "Qui a formulé les trois lois du mouvement ?", options: ["Galilée", "Kepler", "Newton", "Descartes", "Einstein"], correct: 2 },
+        { q: "Quel organe produit l'insuline ?", options: ["Foie", "Estomac", "Pancréas", "Rein", "Rate"], correct: 2 },
+        { q: "En quelle année l'URSS a-t-elle été dissoute ?", options: ["1989", "1990", "1991", "1992", "1993"], correct: 2 },
+        { q: "Quelle est la capitale de l'Iran ?", options: ["Bagdad", "Téhéran", "Damas", "Ryad", "Kaboul"], correct: 1 },
+        { q: "Qui a découvert la structure en double hélice de l'ADN ?", options: ["Darwin & Mendel", "Watson & Crick", "Curie & Pasteur", "Fleming & Dalton", "Bohr & Tesla"], correct: 1 },
+        { q: "Quel est le plus grand satellite naturel de Saturne ?", options: ["Europe", "Titan", "Ganymède", "Io", "Phobos"], correct: 1 }
+    ],
+    8: [ // Niveau 8 : Maître
+        { q: "Quel pays a pour capitale Oulan-Bator ?", options: ["Kazakhstan", "Mongolie", "Ouzbékistan", "Kirghizistan", "Bhoutan"], correct: 1 },
+        { q: "Qui est le créateur du langage de programmation Python ?", options: ["Dennis Ritchie", "Guido van Rossum", "Bjarne Stroustrup", "James Gosling", "Brendan Eich"], correct: 1 },
+        { q: "Quel est l'élément le plus dense naturellement présent sur Terre ?", options: ["Plomb", "Or", "Osmium", "Iridium", "Platine"], correct: 2 },
+        { q: "Quelle est la distance Terre-Soleil environ ?", options: ["90 millions km", "120 millions km", "150 millions km", "180 millions km", "210 millions km"], correct: 2 },
+        { q: "Dans quelle ville se trouve le siège de l'ONU ?", options: ["Genève", "Washington", "New York", "Bruxelles", "Vienne"], correct: 2 },
+        { q: "Quel est l'auteur de 'L'Odyssée' ?", options: ["Sophocle", "Homère", "Euripide", "Platon", "Aristote"], correct: 1 },
+        { q: "Quel est le gaz noble le plus léger ?", options: ["Néon", "Argon", "Krypton", "Xénon", "Hélium"], correct: 4 },
+        { q: "Quelle bataille a marqué la fin de Napoléon en 1815 ?", options: ["Austerlitz", "Waterloo", "Iéna", "Borodino", "Trafalgar"], correct: 1 },
+        { q: "Quel est le fleuve le plus long du monde ?", options: ["Amazone", "Nil", "Mississippi", "Yangtsé", "Danube"], correct: 1 },
+        { q: "Qui a peint 'Guernica' ?", options: ["Dalí", "Picasso", "Miró", "Goya", "Velázquez"], correct: 1 }
+    ],
+    9: [ // Niveau 9 : Grand Maître
+        { q: "Quel philosophe a écrit 'Ainsi parlait Zarathoustra' ?", options: ["Kant", "Hegel", "Nietzsche", "Schopenhauer", "Heidegger"], correct: 2 },
+        { q: "Quel est le nom du premier satellite artificiel ?", options: ["Apollo 11", "Voyager 1", "Sputnik 1", "Explorer 1", "Skylab"], correct: 2 },
+        { q: "Quelle est la capitale du Kazakhstan ?", options: ["Almaty", "Astana", "Bichkek", "Tachkent", "Douchanbé"], correct: 1 },
+        { q: "Qui a remporté le premier prix Nobel de physique ?", options: ["Marie Curie", "Max Planck", "Wilhelm Röntgen", "Henri Becquerel", "Albert Einstein"], correct: 2 },
+        { q: "Quel est le plus grand état des USA par sa surface ?", options: ["Texas", "Californie", "Alaska", "Montana", "Floride"], correct: 2 },
+        { q: "Dans quelle ville l'archiduc François-Ferdinand a-t-il été assassiné ?", options: ["Vienne", "Sarajevo", "Belgrade", "Prague", "Budapest"], correct: 1 },
+        { q: "Quel est l'élément chimique de symbole W ?", options: ["Wolfram (Tungstène)", "Wattium", "Waterium", "Wisium", "Wismuth"], correct: 0 },
+        { q: "Quel est le nom de l'algorithme de recherche original de Google ?", options: ["PageRank", "SearchFlow", "LinkMap", "DataCore", "NetRank"], correct: 0 },
+        { q: "En quel siècle a vécu Léonard de Vinci ?", options: ["XIVe", "XVe", "XVIe", "XVIIe", "XVIIIe"], correct: 1 },
+        { q: "Quel est le nom de la particule de lumière ?", options: ["Electron", "Proton", "Photon", "Neutron", "Positron"], correct: 2 }
+    ],
+    10: [ // Niveau 10 : Divin (Extrêmement difficile)
+        { q: "Qui a résolu la conjecture de Poincaré en 2003 ?", options: ["Andrew Wiles", "Grigori Perelman", "Cédric Villani", "Terence Tao", "Edward Witten"], correct: 1 },
+        { q: "Quelle particule donne leur masse aux autres selon le modèle standard ?", options: ["Le Quark Top", "Le Boson de Higgs", "Le Graviton", "Le Neutrino", "Le Muon"], correct: 1 },
+        { q: "Quel empire a été vaincu à la bataille de Lépante en 1571 ?", options: ["Empire Byzantin", "Empire Ottoman", "Empire Perse", "Empire Romain", "Empire Mongol"], correct: 1 },
+        { q: "Quel mathématicien a écrit 'Arithmetica', base de la théorie des nombres ?", options: ["Euclide", "Pythagore", "Diophante", "Archimède", "Thalès"], correct: 2 },
+        { q: "Quel est le nom du paradoxe impliquant un chat mort et vivant ?", options: ["Paradoxe de Fermi", "Paradoxe de Schrödinger", "Paradoxe de Russell", "Paradoxe de Zenon", "Paradoxe de Banach-Tarski"], correct: 1 },
+        { q: "Quelle est la capitale du Bhoutan ?", options: ["Thimphou", "Paro", "Punakha", "Jakar", "Wangdue"], correct: 0 },
+        { q: "Qui a formulé le principe d'incertitude ?", options: ["Niels Bohr", "Max Planck", "Werner Heisenberg", "Erwin Schrödinger", "Louis de Broglie"], correct: 2 },
+        { q: "Dans quel pays se trouve le désert de Lout, l'endroit le plus chaud du monde ?", options: ["Libye", "Algérie", "Iran", "Éthiopie", "Arabie Saoudite"], correct: 2 },
+        { q: "Quel compositeur a écrit l'opéra 'Tristan et Isolde' ?", options: ["Verdi", "Wagner", "Puccini", "Mozart", "Strauss"], correct: 1 },
+        { q: "Quelle est la distance exacte d'une UA (Unité Astronomique) ?", options: ["144 597 871 km", "149 597 871 km", "152 597 871 km", "155 597 871 km", "160 597 871 km"], correct: 1 }
+    ]
+};

@@ -1,0 +1,252 @@
+:root {
+    --primary: #6366f1;
+    --secondary: #a855f7;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f8fafc;
+    --success: #22c55e;
+    --error: #ef4444;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 600px;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.5s ease; }
+
+h1 { font-size: 3rem; letter-spacing: 2px; }
+h1 span { color: var(--primary); text-shadow: 0 0 15px var(--primary); }
+
+.main-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #334155;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 10px;
+    transition: width 0.3s;
+}
+
+.options-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.option-btn:hover { background: rgba(255,255,255,0.1); }
+.correct { background: var(--success) !important; }
+.wrong { background: var(--error) !important; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+
+.timer-display {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+/* Effet d'urgence quand il reste moins de 5 secondes */
+.timer-low {
+    color: var(--error);
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
+.secondary-btn {
+    background: rgba(106, 21, 218, 0.76);
+    color: white;
+    border: 1px solid var(--primary);
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover{
+    background: rgba(24, 21, 218, 0.788);
+    box-shadow: 1px 6px 6px rgb(96, 2, 158);
+    transform: scale(1.04);
+
+}
+
+
+.danger-btn {
+    background: var(--error);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Fenêtre Modale (Pop-up) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid var(--primary);
+    width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.score-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.highlight { color: var(--secondary); font-weight: bold; }
+
+/* --- ADAPTATION MOBILE ET TABLETTE --- */
+
+/* Pour les tablettes et petits écrans (max 768px) */
+@media screen and (max-width: 768px) {
+    .game-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    h1 { font-size: 2.2rem; }
+    
+    .question-box p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+}
+
+/* Pour les smartphones (max 480px) */
+@media screen and (max-width: 480px) {
+    body {
+        align-items: flex-start; /* Aligne en haut pour éviter d'être coupé par le clavier */
+        padding-top: 20px;
+    }
+
+    .game-container {
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: none; /* Allège le rendu sur vieux mobiles */
+    }
+
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    /* On force les options à être sur une seule colonne pour cliquer facilement */
+    .options-grid {
+        grid-template-columns: 1fr; 
+        gap: 8px;
+    }
+
+    .option-btn {
+        padding: 15px; /* Plus grand pour le doigt */
+        font-size: 1rem;
+    }
+
+    .header {
+        flex-direction: column; /* Empile le niveau et le score */
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .main-btn {
+        width: 100%; /* Boutons en plein écran */
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    /* Adaptation de la fenêtre paramètres (Modal) */
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 15px;
+    }
+}
+
+/* Gestion du mode Paysage (Landscape) sur mobile */
+@media screen and (max-height: 500px) {
+    .game-container {
+        margin: 10px 0;
+    }
+    h1 { font-size: 1.5rem; }
+    .options-grid {
+        grid-template-columns: 1fr 1fr; /* Deux colonnes si l'écran est très large mais peu haut */
+    }
+}
